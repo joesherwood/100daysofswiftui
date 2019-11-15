@@ -4,18 +4,8 @@
 import SwiftUI
 
 struct ContentView: View {
-  let students = ["Alice", "Bob", "Eve"]
-  @State private var selectedStudent = 0
-  
   var body: some View {
-    VStack {
-      Picker("Select student", selection: $selectedStudent) {
-        ForEach(0 ..< students.count) {
-          Text(self.students[$0])
-        }
-      }
-      Text("You chose \(students[selectedStudent])")
-    }
+    Text("Hello World")
   }
   
 }
