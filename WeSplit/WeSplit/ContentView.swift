@@ -5,17 +5,21 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var checkAmount = ""
-  @State private var numberOfPeople = 2
-  @State private var tipPercentage = 2
+  @State private var numberOfPeopleIndex = 2
+  @State private var tipPercentageIndex = 2
   let tipPercentages = [10, 15, 20, 25, 0]
   
+  /// Convert selected number of people entry index to its corresponding number of people
+  var numberOfPeople: Int {
+    return numberOfPeopleIndex + 2
+  }
   
   /// Calculates share of check + tip for each person
   var totalPerPerson: Double {
-    let peopleCount = Double(numberOfPeople + 2)
-    let tipSelection = Double(tipPercentages[tipPercentage])
+    let splitWays = Double(numberOfPeople)
+    let tipPercentage = Double(tipPercentages[tipPercentageIndex])
     let orderAmount = Double(checkAmount) ?? 0
-    return orderAmount * (tipSelection / 100 + 1.0) / peopleCount
+    return orderAmount * (tipPercentage / 100 + 1.0) / splitWays
   }
   
   var body: some View {
@@ -24,14 +28,14 @@ struct ContentView: View {
         Section {
           TextField("Amount", text: $checkAmount)
             .keyboardType(.decimalPad)
-          Picker("Number of People", selection: $numberOfPeople) {
+          Picker("Number of People", selection: $numberOfPeopleIndex) {
             ForEach(2 ..< 100) {
               Text("\($0) people")
             }
           }
         }
         Section(header: Text("How much tip do you want to leave?")) {
-          Picker("Tip Percentage", selection: $tipPercentage) {
+          Picker("Tip Percentage", selection: $tipPercentageIndex) {
             ForEach(0 ..< tipPercentages.count) {
               Text("\(self.tipPercentages[$0])%")
             }
