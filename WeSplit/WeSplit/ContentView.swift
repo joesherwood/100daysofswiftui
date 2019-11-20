@@ -5,13 +5,13 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var checkAmount = ""
-  @State private var numberOfPeopleIndex = 2
+  @State private var numberOfPeopleEntry = ""
   @State private var tipPercentageIndex = 2
   let tipPercentages = [10, 15, 20, 25, 0]
   
-  /// Convert selected number of people entry index to its corresponding number of people
+  /// Convert selected number of people text into an integer
   var numberOfPeople: Int {
-    return numberOfPeopleIndex + 2
+    return Int(numberOfPeopleEntry) ?? 1
   }
   
   /// Calculates share of check + tip for each person
@@ -22,17 +22,21 @@ struct ContentView: View {
     return orderAmount * (tipPercentage / 100 + 1.0) / splitWays
   }
   
+  /// Calculates total bill (check + tip)
+  var total: Double {
+    let tipPercentage = Double(tipPercentages[tipPercentageIndex])
+    let orderAmount = Double(checkAmount) ?? 0
+    return orderAmount * (tipPercentage / 100 + 1.0)
+  }
+  
   var body: some View {
     NavigationView {
       Form {
         Section {
           TextField("Amount", text: $checkAmount)
             .keyboardType(.decimalPad)
-          Picker("Number of People", selection: $numberOfPeopleIndex) {
-            ForEach(2 ..< 100) {
-              Text("\($0) people")
-            }
-          }
+          TextField("Number of people", text: $numberOfPeopleEntry)
+            .keyboardType(.decimalPad)
         }
         Section(header: Text("How much tip do you want to leave?")) {
           Picker("Tip Percentage", selection: $tipPercentageIndex) {
@@ -41,8 +45,11 @@ struct ContentView: View {
             }
           }.pickerStyle(SegmentedPickerStyle())
         }
-        Section {
+        Section(header: Text("Amount per person")) {
           Text("$\(totalPerPerson, specifier: "%.2f")")
+        }
+        Section(header: Text("Total amount")) {
+          Text("$\(total, specifier: "%.2f")")
         }
       }.navigationBarTitle("WeSplit")
     }
