@@ -3,9 +3,27 @@
 
 import SwiftUI
 
+enum Unit: String {
+  case celsius = "Celsius"
+  case fahrenheit = "Fahrenheit"
+  case kelvin = "Kelvin"
+}
+
 struct ContentView: View {
+  let availableUnits: [Unit] = [.celsius, .fahrenheit, .kelvin]
+  @State private var convertFrom: Unit = .fahrenheit
+  
   var body: some View {
-    Text("Hello, World!")
+    Form {
+      Section(header: Text("Convert")) {
+        Picker("unit", selection: $convertFrom) {
+          ForEach(availableUnits, id: \.self) { unit in
+            Text("\(unit.rawValue)")
+          }
+        }.pickerStyle(SegmentedPickerStyle())
+      }
+      
+    }
   }
 }
 
