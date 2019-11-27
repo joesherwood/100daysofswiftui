@@ -51,7 +51,7 @@ struct ContentView: View {
       }
       
       Section {
-        Text("\(baseValue.converted(to: unitToMeasurementUnit[convertTo]!).value)")
+        Text("\(baseValue.converted(to: unitToMeasurementUnit[convertTo]!).value, specifier: "%.1f")")
       }
       
     }
