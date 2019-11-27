@@ -15,8 +15,17 @@ struct ContentView: View {
   @State private var convertTo: Unit = .celsius
   @State private var convertValueText = ""
   
+  private let unitToMeasurementUnit = [Unit.celsius: UnitTemperature.celsius,
+                                       Unit.fahrenheit: UnitTemperature.fahrenheit,
+                                       Unit.kelvin: UnitTemperature.kelvin]
+  
   private var convertValue: Double {
     return Double(convertValueText) ?? 0
+  }
+  
+  private var baseValue: Measurement<UnitTemperature> {
+    let value = Measurement(value: self.convertValue, unit: unitToMeasurementUnit[convertFrom]!)
+    return value.converted(to: UnitTemperature.celsius)
   }
   
   var body: some View {
@@ -39,6 +48,10 @@ struct ContentView: View {
             Text("\(unit.rawValue)")
           }
         }.pickerStyle(SegmentedPickerStyle())
+      }
+      
+      Section {
+        Text("\(baseValue.converted(to: unitToMeasurementUnit[convertTo]!).value)")
       }
       
     }
