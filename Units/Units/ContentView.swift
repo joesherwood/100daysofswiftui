@@ -13,18 +13,18 @@ struct ContentView: View {
   let availableUnits: [Unit] = [.celsius, .fahrenheit, .kelvin]
   @State private var convertFrom: Unit = .fahrenheit
   @State private var convertTo: Unit = .celsius
-  @State private var convertValueText = ""
+  @State private var valueEntry = ""
   
   private let unitToMeasurementUnit = [Unit.celsius: UnitTemperature.celsius,
                                        Unit.fahrenheit: UnitTemperature.fahrenheit,
                                        Unit.kelvin: UnitTemperature.kelvin]
   
-  private var convertValue: Double {
-    return Double(convertValueText) ?? 0
+  private var value: Double? {
+    return Double(valueEntry) ?? nil
   }
   
   private var baseValue: Measurement<UnitTemperature> {
-    let value = Measurement(value: self.convertValue, unit: unitToMeasurementUnit[convertFrom]!)
+    let value = Measurement(value: self.value ?? 0, unit: unitToMeasurementUnit[convertFrom]!)
     return value.converted(to: UnitTemperature.celsius)
   }
   
@@ -32,10 +32,10 @@ struct ContentView: View {
     Form {
       
       Section(header: Text("Convert")) {
-        TextField("Value", text: $convertValueText)
+        TextField("degrees", text: $valueEntry)
           .keyboardType(.decimalPad)
         
-        Picker("unit", selection: $convertFrom) {
+        Picker("convert from unit", selection: $convertFrom) {
           ForEach(availableUnits, id: \.self) { unit in
             Text("\(unit.rawValue)")
           }
@@ -43,17 +43,18 @@ struct ContentView: View {
       }
       
       Section(header: Text("to")) {
-        Picker("unit", selection: $convertTo) {
+        Picker("convert to unit", selection: $convertTo) {
           ForEach(availableUnits, id: \.self) { unit in
             Text("\(unit.rawValue)")
           }
         }.pickerStyle(SegmentedPickerStyle())
       }
       
-      Section {
-        Text("\(baseValue.converted(to: unitToMeasurementUnit[convertTo]!).value, specifier: "%.1f")")
+      if (self.value != nil) {
+        Section {
+          Text("\(baseValue.converted(to: unitToMeasurementUnit[convertTo]!).value, specifier: "%.1f")")
+        }
       }
-      
     }
   }
 }
