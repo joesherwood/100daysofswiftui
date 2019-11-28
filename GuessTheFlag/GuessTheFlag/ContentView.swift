@@ -6,9 +6,14 @@ import SwiftUI
 struct ContentView: View {
   var body: some View {
 
-    ZStack {
-      Text("Your content")
-        .background(AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center))
+    Button(action: {
+      print("Button was touched")
+    }) {
+      HStack(spacing: 10) {
+        Image(systemName: "pencil")
+          .renderingMode(.original)
+        Text("Tap me too")
+      }
     }
     
   }
