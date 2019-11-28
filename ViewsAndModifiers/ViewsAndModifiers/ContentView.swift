@@ -5,12 +5,9 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    VStack(spacing: 10) {
-      CapsuleText(text: "1th")
-        .foregroundColor(.white)
-      CapsuleText(text: "2th")
-        .foregroundColor(.yellow)
-    }
+    Color.blue
+    .frame(width: 300, height: 300)
+    .watermarked(with: "Hacking With Swift")
   }
 }
 
@@ -20,14 +17,39 @@ struct ContentView_Previews: PreviewProvider {
   }
 }
 
-
-struct CapsuleText: View {
-  var text: String
-  var body: some View {
-    Text(text)
+struct Title: ViewModifier {
+  func body(content: Content) -> some View {
+    content
       .font(.largeTitle)
+      .foregroundColor(.white)
       .padding()
       .background(Color.blue)
-      .clipShape(Capsule())
+      .clipShape(RoundedRectangle(cornerRadius: 10))
+  }
+}
+
+struct Watermark: ViewModifier {
+  var text: String
+  
+  func body(content: Content) -> some View {
+    ZStack(alignment: .bottomTrailing) {
+      content
+      Text(text)
+        .font(.caption)
+        .foregroundColor(.white)
+        .padding(5)
+        .background(Color.black)
+    }
+  }
+}
+
+
+extension View {
+  func titleStyle() -> some View {
+    self.modifier(Title())
+  }
+  
+  func watermarked(with text: String) -> some View {
+    self.modifier(Watermark(text: text))
   }
 }
