@@ -30,11 +30,7 @@ struct ContentView: View {
           Button(action: {
             self.flagTapped(number)
           }) {
-            Image(self.countries[number])
-              .renderingMode(.original)
-              .clipShape(Capsule())
-              .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-              .shadow(color: .black, radius: 2)
+            FlagImage(country: self.countries[number])
           }
         }
         
@@ -49,7 +45,7 @@ struct ContentView: View {
     .alert(isPresented: $showingScore) {
       Alert(title: Text(scoreTitle), message: Text("Your score is \(correctTotal)"), dismissButton: .default(Text("Continue")) {
         self.askQuestion()
-      })
+        })
     }
   }
   
@@ -70,6 +66,18 @@ struct ContentView: View {
     correctAnswer = Int.random(in: 0...2)
   }
   
+}
+
+struct FlagImage: View {
+  var country: String
+  
+  var body: some View {
+    Image(country)
+      .renderingMode(.original)
+      .clipShape(Capsule())
+      .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+      .shadow(color: .black, radius: 2)
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
