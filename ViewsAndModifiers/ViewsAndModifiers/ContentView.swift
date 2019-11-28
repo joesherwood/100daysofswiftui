@@ -4,15 +4,16 @@
 import SwiftUI
 
 struct ContentView: View {
+  var motto1: some View { Text("Draco dormiens") }
+  let motto2 = Text("nanquam titillandus")
+  
   var body: some View {
     VStack {
-      Text("One")
-        .blur(radius: 0)
-      Text("Two")
-      Text("Three")
-      Text("Four")
+      motto1
+        .foregroundColor(.red)
+      motto2
+        .foregroundColor(.blue)
     }
-    .blur(radius: 5)
   }
 }
 
