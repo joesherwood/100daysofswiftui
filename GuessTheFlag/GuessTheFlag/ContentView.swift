@@ -38,6 +38,11 @@ struct ContentView: View {
           }
         }
         
+        Text("Score: \(correctTotal)")
+          .foregroundColor(Color.white)
+          .font(.title)
+          .fontWeight(.thin)
+        
         Spacer()
       }
     }
