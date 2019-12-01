@@ -36,6 +36,7 @@ struct ContentView: View {
   @State var cpuMove = Move.allCases.randomElement() ?? Move.rock
   @State var shouldWin = Bool.random()
   @State var score: Score = Score()
+  @State var final: Bool = false
   
   var body: some View {
     VStack {
@@ -61,6 +62,11 @@ struct ContentView: View {
         .frame(height: 100)
       }
       
+    }
+    .alert(isPresented: $final) {
+      Alert(title: Text("Final"), message: Text("Your score is \(score.line())"), dismissButton: .default(Text("New Game")) {
+        self.score = Score()
+        })
     }
   }
   
@@ -100,6 +106,9 @@ struct ContentView: View {
   func reload() {
     self.cpuMove = Move.allCases.randomElement() ?? Move.rock
     self.shouldWin = Bool.random()
+    if (self.score.attempts == 10) {
+      self.final = true
+    }
   }
 }
 
