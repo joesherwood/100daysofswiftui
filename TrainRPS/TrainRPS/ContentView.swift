@@ -82,7 +82,7 @@ struct ContentView: View {
       }
     }
     .alert(isPresented: $final) {
-      Alert(title: Text("Final"), message: Text("Your score is \(score.line())"), dismissButton: .default(Text("New Game")) {
+      Alert(title: Text("Final"), message: Text("You finished \(score.line())"), dismissButton: .default(Text("New Game")) {
         self.score = Score()
         })
     }
