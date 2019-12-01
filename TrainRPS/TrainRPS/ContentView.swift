@@ -51,9 +51,30 @@ struct ContentView: View {
           .aspectRatio(contentMode: .fit)
           .frame(width: 50, height: 50)
       }
+      
+      ForEach(Move.allCases, id: \.self) { move in
+        Button(action: {
+          print("touched \(move.rawValue)")
+        }) {
+          ActionImage(name: move.rawValue)
+        }
+        .frame(height: 100)
+      }
     }
   }
 }
+
+struct ActionImage: View {
+  var name: String
+  var body: some View {
+    Image(systemName: name)
+      .renderingMode(.original)
+      .resizable()
+      .aspectRatio(contentMode: .fit)
+  }
+}
+
+
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
