@@ -44,23 +44,32 @@ struct ContentView: View {
         .font(.body)
         .fontWeight(.thin)
       
-      HStack {
-        Text(shouldWin ? "Beat" : "Lose to")
-          .font(.title)
-        Image(systemName: cpuMove.rawValue)
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .frame(width: 50, height: 50)
-      }
-      
-      ForEach(Move.allCases, id: \.self) { move in
-        Button(action: {
-          self.checkAnswer(user: move, cpu: self.cpuMove, shouldWin: self.shouldWin)
-        }) {
-          ActionImage(name: move.rawValue)
+      ZStack {
+        RoundedRectangle(cornerRadius: 10)
+          .foregroundColor(.gray)
+        HStack {
+          Text(shouldWin ? "Beat" : "Lose to")
+            .font(.title)
+          Image(systemName: cpuMove.rawValue)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 50, height: 50)
         }
-        .frame(height: 100)
       }
+      .frame(maxWidth: 300, maxHeight: 100)
+      
+      VStack {
+        ForEach(Move.allCases, id: \.self) { move in
+          Button(action: {
+            self.checkAnswer(user: move, cpu: self.cpuMove, shouldWin: self.shouldWin)
+          }) {
+            ActionImage(name: move.rawValue)
+          }
+          .frame(height: 100)
+        }
+        .padding([.top, .bottom], 10)
+      }
+      .padding([.top], 40)
       
     }
     .alert(isPresented: $final) {
