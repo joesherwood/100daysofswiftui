@@ -54,13 +54,52 @@ struct ContentView: View {
       
       ForEach(Move.allCases, id: \.self) { move in
         Button(action: {
-          print("touched \(move.rawValue)")
+          self.checkAnswer(user: move, cpu: self.cpuMove, shouldWin: self.shouldWin)
         }) {
           ActionImage(name: move.rawValue)
         }
         .frame(height: 100)
       }
+      
     }
+  }
+  
+  func checkAnswer(user: Move, cpu: Move, shouldWin: Bool) {
+    var winner: Bool = false
+    if (shouldWin) {
+      switch cpu {
+      case .rock:
+        winner = (user == .paper)
+      case .paper:
+        winner = (user == .scissors)
+      case .scissors:
+        winner = (user == .rock)
+      }
+    }
+    else {
+      switch cpu {
+      case .rock:
+        winner = (user == .scissors)
+      case .paper:
+        winner = (user == .rock)
+      case .scissors:
+        winner = (user == .paper)
+      }
+    }
+    
+    if (winner) {
+      self.score.win()
+    }
+    else {
+      self.score.lose()
+    }
+    
+    self.reload()
+  }
+  
+  func reload() {
+    self.cpuMove = Move.allCases.randomElement() ?? Move.rock
+    self.shouldWin = Bool.random()
   }
 }
 
