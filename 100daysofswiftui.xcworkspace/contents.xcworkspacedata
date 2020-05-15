@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BetterRest/BetterRest.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:TrainRPS/TrainRPS.xcodeproj">
    </FileRef>
    <FileRef
