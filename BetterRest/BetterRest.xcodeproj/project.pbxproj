@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11E4168246E391C00221E87 /* BetterRestSleep.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A11E4167246E391C00221E87 /* BetterRestSleep.mlmodel */; };
 		A1A02CE5246E01F000954308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A02CE4246E01F000954308 /* AppDelegate.swift */; };
 		A1A02CE7246E01F000954308 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A02CE6246E01F000954308 /* SceneDelegate.swift */; };
 		A1A02CE9246E01F000954308 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A02CE8246E01F000954308 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A11E4167246E391C00221E87 /* BetterRestSleep.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BetterRestSleep.mlmodel; sourceTree = "<group>"; };
 		A1A02CE1246E01F000954308 /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A02CE4246E01F000954308 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1A02CE6246E01F000954308 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		A1E5BD22246E2C9E0076D4A5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				A11E4167246E391C00221E87 /* BetterRestSleep.mlmodel */,
 				A1E5BD25246E314F0076D4A5 /* data.csv */,
 			);
 			path = data;
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11E4168246E391C00221E87 /* BetterRestSleep.mlmodel in Sources */,
 				A1A02CE5246E01F000954308 /* AppDelegate.swift in Sources */,
 				A1A02CE7246E01F000954308 /* SceneDelegate.swift in Sources */,
 				A1A02CE9246E01F000954308 /* ContentView.swift in Sources */,
