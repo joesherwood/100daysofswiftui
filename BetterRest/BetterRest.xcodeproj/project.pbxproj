@@ -13,6 +13,7 @@
 		A1A02CEB246E01F000954308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A02CEA246E01F000954308 /* Assets.xcassets */; };
 		A1A02CEE246E01F000954308 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A02CED246E01F000954308 /* Preview Assets.xcassets */; };
 		A1A02CF1246E01F000954308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A02CEF246E01F000954308 /* LaunchScreen.storyboard */; };
+		A1E5BD24246E2CB40076D4A5 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1E5BD23246E2CB40076D4A5 /* data.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A1A02CED246E01F000954308 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A1A02CF0246E01F000954308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1A02CF2246E01F000954308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1E5BD23246E2CB40076D4A5 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		A1A02CE3246E01F000954308 /* BetterRest */ = {
 			isa = PBXGroup;
 			children = (
+				A1E5BD22246E2C9E0076D4A5 /* data */,
 				A1A02CE4246E01F000954308 /* AppDelegate.swift */,
 				A1A02CE6246E01F000954308 /* SceneDelegate.swift */,
 				A1A02CE8246E01F000954308 /* ContentView.swift */,
@@ -73,6 +76,14 @@
 				A1A02CED246E01F000954308 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A1E5BD22246E2C9E0076D4A5 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				A1E5BD23246E2CB40076D4A5 /* data.txt */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E5BD24246E2CB40076D4A5 /* data.txt in Resources */,
 				A1A02CF1246E01F000954308 /* LaunchScreen.storyboard in Resources */,
 				A1A02CEE246E01F000954308 /* Preview Assets.xcassets in Resources */,
 				A1A02CEB246E01F000954308 /* Assets.xcassets in Resources */,
